@@ -36,6 +36,7 @@
             this.btnChangeColorDjan = new System.Windows.Forms.Button();
             this.lblIDDjan = new System.Windows.Forms.Label();
             this.tbxChangePlayernameDjan = new System.Windows.Forms.TextBox();
+            this.btnCloseDjan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblPlayerNameDjan
@@ -102,10 +103,22 @@
             this.tbxChangePlayernameDjan.Text = "Change Playername";
             this.tbxChangePlayernameDjan.TextChanged += new System.EventHandler(this.tbxChangePlayernameDjan_TextChanged);
             // 
+            // btnCloseDjan
+            // 
+            this.btnCloseDjan.BackColor = System.Drawing.Color.Red;
+            this.btnCloseDjan.Location = new System.Drawing.Point(259, 77);
+            this.btnCloseDjan.Name = "btnCloseDjan";
+            this.btnCloseDjan.Size = new System.Drawing.Size(25, 23);
+            this.btnCloseDjan.TabIndex = 8;
+            this.btnCloseDjan.Text = "❌";
+            this.btnCloseDjan.UseVisualStyleBackColor = false;
+            this.btnCloseDjan.Click += new System.EventHandler(this.btnCloseDjan_Click);
+            // 
             // UCPlayerDjan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnCloseDjan);
             this.Controls.Add(this.tbxChangePlayernameDjan);
             this.Controls.Add(this.lblIDDjan);
             this.Controls.Add(this.btnChangeColorDjan);
@@ -129,5 +142,6 @@
         public System.Windows.Forms.Label lblIDDjan;
         private System.Windows.Forms.TextBox tbxChangePlayernameDjan;
         public System.Windows.Forms.Label lblPlayerNameDjan;
+        private System.Windows.Forms.Button btnCloseDjan;
     }
 }

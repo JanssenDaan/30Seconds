@@ -19,6 +19,7 @@ namespace _30SecondsDjan
         public UCTeam TeamControlDjan = new UCTeam();
         public int CurrentIDPlayersDjan { get; set; } = 1;
         public int CurrentIDTeamsDjan { get; set; } = 1;
+        public List<UCTeam> ucTeamList = new List<UCTeam>();
 
         public MainForm()
         {
@@ -57,6 +58,24 @@ namespace _30SecondsDjan
             CurrentIDTeamsDjan++;
         }
 
-        
+        private void btnToGameSettingsDjan_Click(object sender, EventArgs e)
+        {
+            tclOne.SelectedTab = tbpGameDjan;
+            ucTeamList = MainForm.instance.pnlTeamsDjan.Controls.OfType<UCTeam>().ToList(); ;
+
+            foreach (UCTeam team in ucTeamList)
+            {
+                lbxTeamsDjan.Items.Add(team.TeamDjan);
+                
+            }
+
+            
+
+        }
+
+        private void lbxTeamsDjan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

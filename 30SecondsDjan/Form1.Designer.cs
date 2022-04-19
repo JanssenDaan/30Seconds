@@ -37,8 +37,11 @@
             this.tbpGameDjan = new System.Windows.Forms.TabPage();
             this.tbpPlayDjan = new System.Windows.Forms.TabPage();
             this.btnToGameSettingsDjan = new System.Windows.Forms.Button();
+            this.lbxTeamsDjan = new System.Windows.Forms.ListBox();
+            this.btnStopGameDjan = new System.Windows.Forms.Button();
             this.tclOne.SuspendLayout();
             this.tbpHomeDjan.SuspendLayout();
+            this.tbpGameDjan.SuspendLayout();
             this.SuspendLayout();
             // 
             // tclOne
@@ -106,6 +109,8 @@
             // 
             // tbpGameDjan
             // 
+            this.tbpGameDjan.Controls.Add(this.btnStopGameDjan);
+            this.tbpGameDjan.Controls.Add(this.lbxTeamsDjan);
             this.tbpGameDjan.Location = new System.Drawing.Point(4, 22);
             this.tbpGameDjan.Name = "tbpGameDjan";
             this.tbpGameDjan.Padding = new System.Windows.Forms.Padding(3);
@@ -132,6 +137,25 @@
             this.btnToGameSettingsDjan.TabIndex = 5;
             this.btnToGameSettingsDjan.Text = "Next";
             this.btnToGameSettingsDjan.UseVisualStyleBackColor = true;
+            this.btnToGameSettingsDjan.Click += new System.EventHandler(this.btnToGameSettingsDjan_Click);
+            // 
+            // lbxTeamsDjan
+            // 
+            this.lbxTeamsDjan.FormattingEnabled = true;
+            this.lbxTeamsDjan.Location = new System.Drawing.Point(155, 6);
+            this.lbxTeamsDjan.Name = "lbxTeamsDjan";
+            this.lbxTeamsDjan.Size = new System.Drawing.Size(161, 524);
+            this.lbxTeamsDjan.TabIndex = 0;
+            this.lbxTeamsDjan.SelectedIndexChanged += new System.EventHandler(this.lbxTeamsDjan_SelectedIndexChanged);
+            // 
+            // btnStopGameDjan
+            // 
+            this.btnStopGameDjan.Location = new System.Drawing.Point(9, 7);
+            this.btnStopGameDjan.Name = "btnStopGameDjan";
+            this.btnStopGameDjan.Size = new System.Drawing.Size(140, 63);
+            this.btnStopGameDjan.TabIndex = 1;
+            this.btnStopGameDjan.Text = "Stop Game";
+            this.btnStopGameDjan.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -143,6 +167,7 @@
             this.Text = "Form1";
             this.tclOne.ResumeLayout(false);
             this.tbpHomeDjan.ResumeLayout(false);
+            this.tbpGameDjan.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -158,6 +183,8 @@
         public System.Windows.Forms.FlowLayoutPanel pnlTeamsDjan;
         public System.Windows.Forms.FlowLayoutPanel pnlPlayersDjan;
         private System.Windows.Forms.Button btnToGameSettingsDjan;
+        private System.Windows.Forms.ListBox lbxTeamsDjan;
+        private System.Windows.Forms.Button btnStopGameDjan;
     }
 }
 

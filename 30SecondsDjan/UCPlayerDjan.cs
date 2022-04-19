@@ -17,9 +17,10 @@ namespace _30SecondsDjan
         public List<UCTeam> UCTeamList { get; set; }
         public UCPlayerDjan()
         {
-            
             InitializeComponent();
             lblIDDjan.Text = $"ID: {PlayerDjan.ID}";
+
+            
         }
 
         private void btnChangeColorDjan_Click(object sender, EventArgs e)
@@ -45,6 +46,11 @@ namespace _30SecondsDjan
         {
             lblPlayerNameDjan.Text = tbxChangePlayernameDjan.Text;
             PlayerDjan.Playername = tbxChangePlayernameDjan.Text;
+        }
+
+        private void btnCloseDjan_Click(object sender, EventArgs e)
+        {
+            MainForm.instance.pnlPlayersDjan.Controls.Remove(this);
         }
     }
 }

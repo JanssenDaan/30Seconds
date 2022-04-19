@@ -13,7 +13,7 @@ namespace _30SecondsDjan
 {
     public partial class UCTeam : UserControl
     {
-       public Team TeamDjan = new Team();
+        public Team TeamDjan = new Team();
         public UCTeam()
         {
             InitializeComponent();
@@ -25,5 +25,11 @@ namespace _30SecondsDjan
             TeamDjan.TeamName = tbxChangeNameDjan.Text;
             lblTeamNameValueDjan.Text = tbxChangeNameDjan.Text;
         }
+
+        private void btnCloseDjan_Click(object sender, EventArgs e)
+        {
+            MainForm.instance.pnlTeamsDjan.Controls.Remove(this);
+        }
+
     }
 }
