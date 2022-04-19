@@ -42,6 +42,16 @@
             this.btnStopGameDjan = new System.Windows.Forms.Button();
             this.lbxTeamsDjan = new System.Windows.Forms.ListBox();
             this.tbpPlayDjan = new System.Windows.Forms.TabPage();
+            this.cbxFiveDjan = new System.Windows.Forms.CheckBox();
+            this.cbxThreeDjan = new System.Windows.Forms.CheckBox();
+            this.cbxTwoDjan = new System.Windows.Forms.CheckBox();
+            this.cbxFourDjan = new System.Windows.Forms.CheckBox();
+            this.lblWordFiveDjan = new System.Windows.Forms.Label();
+            this.lblWordFourDjan = new System.Windows.Forms.Label();
+            this.lblWordThreeDjan = new System.Windows.Forms.Label();
+            this.lblWordTwoDjan = new System.Windows.Forms.Label();
+            this.lblWordOneDjan = new System.Windows.Forms.Label();
+            this.cbxOneDjan = new System.Windows.Forms.CheckBox();
             this.btnNextPlayer = new System.Windows.Forms.Button();
             this.e = new System.Windows.Forms.GroupBox();
             this.lblTeamFourDjan = new System.Windows.Forms.Label();
@@ -52,17 +62,6 @@
             this.btnStartPlayDjan = new System.Windows.Forms.Button();
             this.lblCurrentPlayerDjan = new System.Windows.Forms.Label();
             this.tmrGamePlayDjan = new System.Windows.Forms.Timer(this.components);
-            this.cbxOneDjan = new System.Windows.Forms.CheckBox();
-            this.lblWordOneDjan = new System.Windows.Forms.Label();
-            this.lblWordTwoDjan = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblWordThreeDjan = new System.Windows.Forms.Label();
-            this.lblWordFourDjan = new System.Windows.Forms.Label();
-            this.lblWordFiveDjan = new System.Windows.Forms.Label();
-            this.cbxFourDjan = new System.Windows.Forms.CheckBox();
-            this.cbxTwoDjan = new System.Windows.Forms.CheckBox();
-            this.cbxThreeDjan = new System.Windows.Forms.CheckBox();
-            this.cbxFiveDjan = new System.Windows.Forms.CheckBox();
             this.tclOne.SuspendLayout();
             this.tbpHomeDjan.SuspendLayout();
             this.tbpGameDjan.SuspendLayout();
@@ -204,7 +203,6 @@
             this.tbpPlayDjan.Controls.Add(this.lblWordFiveDjan);
             this.tbpPlayDjan.Controls.Add(this.lblWordFourDjan);
             this.tbpPlayDjan.Controls.Add(this.lblWordThreeDjan);
-            this.tbpPlayDjan.Controls.Add(this.label3);
             this.tbpPlayDjan.Controls.Add(this.lblWordTwoDjan);
             this.tbpPlayDjan.Controls.Add(this.lblWordOneDjan);
             this.tbpPlayDjan.Controls.Add(this.cbxOneDjan);
@@ -219,6 +217,101 @@
             this.tbpPlayDjan.TabIndex = 2;
             this.tbpPlayDjan.Text = "Play";
             this.tbpPlayDjan.UseVisualStyleBackColor = true;
+            // 
+            // cbxFiveDjan
+            // 
+            this.cbxFiveDjan.AutoSize = true;
+            this.cbxFiveDjan.Location = new System.Drawing.Point(275, 389);
+            this.cbxFiveDjan.Name = "cbxFiveDjan";
+            this.cbxFiveDjan.Size = new System.Drawing.Size(52, 17);
+            this.cbxFiveDjan.TabIndex = 13;
+            this.cbxFiveDjan.Text = "Done";
+            this.cbxFiveDjan.UseVisualStyleBackColor = true;
+            // 
+            // cbxThreeDjan
+            // 
+            this.cbxThreeDjan.AutoSize = true;
+            this.cbxThreeDjan.Location = new System.Drawing.Point(275, 307);
+            this.cbxThreeDjan.Name = "cbxThreeDjan";
+            this.cbxThreeDjan.Size = new System.Drawing.Size(52, 17);
+            this.cbxThreeDjan.TabIndex = 12;
+            this.cbxThreeDjan.Text = "Done";
+            this.cbxThreeDjan.UseVisualStyleBackColor = true;
+            // 
+            // cbxTwoDjan
+            // 
+            this.cbxTwoDjan.AutoSize = true;
+            this.cbxTwoDjan.Location = new System.Drawing.Point(275, 267);
+            this.cbxTwoDjan.Name = "cbxTwoDjan";
+            this.cbxTwoDjan.Size = new System.Drawing.Size(52, 17);
+            this.cbxTwoDjan.TabIndex = 11;
+            this.cbxTwoDjan.Text = "Done";
+            this.cbxTwoDjan.UseVisualStyleBackColor = true;
+            // 
+            // cbxFourDjan
+            // 
+            this.cbxFourDjan.AutoSize = true;
+            this.cbxFourDjan.Location = new System.Drawing.Point(275, 349);
+            this.cbxFourDjan.Name = "cbxFourDjan";
+            this.cbxFourDjan.Size = new System.Drawing.Size(52, 17);
+            this.cbxFourDjan.TabIndex = 11;
+            this.cbxFourDjan.Text = "Done";
+            this.cbxFourDjan.UseVisualStyleBackColor = true;
+            // 
+            // lblWordFiveDjan
+            // 
+            this.lblWordFiveDjan.AutoSize = true;
+            this.lblWordFiveDjan.Location = new System.Drawing.Point(22, 393);
+            this.lblWordFiveDjan.Name = "lblWordFiveDjan";
+            this.lblWordFiveDjan.Size = new System.Drawing.Size(16, 13);
+            this.lblWordFiveDjan.TabIndex = 10;
+            this.lblWordFiveDjan.Text = "---";
+            // 
+            // lblWordFourDjan
+            // 
+            this.lblWordFourDjan.AutoSize = true;
+            this.lblWordFourDjan.Location = new System.Drawing.Point(22, 353);
+            this.lblWordFourDjan.Name = "lblWordFourDjan";
+            this.lblWordFourDjan.Size = new System.Drawing.Size(16, 13);
+            this.lblWordFourDjan.TabIndex = 9;
+            this.lblWordFourDjan.Text = "---";
+            // 
+            // lblWordThreeDjan
+            // 
+            this.lblWordThreeDjan.AutoSize = true;
+            this.lblWordThreeDjan.Location = new System.Drawing.Point(22, 311);
+            this.lblWordThreeDjan.Name = "lblWordThreeDjan";
+            this.lblWordThreeDjan.Size = new System.Drawing.Size(16, 13);
+            this.lblWordThreeDjan.TabIndex = 8;
+            this.lblWordThreeDjan.Text = "---";
+            // 
+            // lblWordTwoDjan
+            // 
+            this.lblWordTwoDjan.AutoSize = true;
+            this.lblWordTwoDjan.Location = new System.Drawing.Point(22, 271);
+            this.lblWordTwoDjan.Name = "lblWordTwoDjan";
+            this.lblWordTwoDjan.Size = new System.Drawing.Size(16, 13);
+            this.lblWordTwoDjan.TabIndex = 7;
+            this.lblWordTwoDjan.Text = "---";
+            // 
+            // lblWordOneDjan
+            // 
+            this.lblWordOneDjan.AutoSize = true;
+            this.lblWordOneDjan.Location = new System.Drawing.Point(22, 232);
+            this.lblWordOneDjan.Name = "lblWordOneDjan";
+            this.lblWordOneDjan.Size = new System.Drawing.Size(16, 13);
+            this.lblWordOneDjan.TabIndex = 6;
+            this.lblWordOneDjan.Text = "---";
+            // 
+            // cbxOneDjan
+            // 
+            this.cbxOneDjan.AutoSize = true;
+            this.cbxOneDjan.Location = new System.Drawing.Point(275, 228);
+            this.cbxOneDjan.Name = "cbxOneDjan";
+            this.cbxOneDjan.Size = new System.Drawing.Size(52, 17);
+            this.cbxOneDjan.TabIndex = 5;
+            this.cbxOneDjan.Text = "Done";
+            this.cbxOneDjan.UseVisualStyleBackColor = true;
             // 
             // btnNextPlayer
             // 
@@ -339,110 +432,6 @@
             this.tmrGamePlayDjan.Interval = 1000;
             this.tmrGamePlayDjan.Tick += new System.EventHandler(this.tmrGamePlayDjan_Tick);
             // 
-            // cbxOneDjan
-            // 
-            this.cbxOneDjan.AutoSize = true;
-            this.cbxOneDjan.Location = new System.Drawing.Point(275, 228);
-            this.cbxOneDjan.Name = "cbxOneDjan";
-            this.cbxOneDjan.Size = new System.Drawing.Size(80, 17);
-            this.cbxOneDjan.TabIndex = 5;
-            this.cbxOneDjan.Text = "checkBox1";
-            this.cbxOneDjan.UseVisualStyleBackColor = true;
-            // 
-            // lblWordOneDjan
-            // 
-            this.lblWordOneDjan.AutoSize = true;
-            this.lblWordOneDjan.Location = new System.Drawing.Point(22, 232);
-            this.lblWordOneDjan.Name = "lblWordOneDjan";
-            this.lblWordOneDjan.Size = new System.Drawing.Size(16, 13);
-            this.lblWordOneDjan.TabIndex = 6;
-            this.lblWordOneDjan.Text = "---";
-            // 
-            // lblWordTwoDjan
-            // 
-            this.lblWordTwoDjan.AutoSize = true;
-            this.lblWordTwoDjan.Location = new System.Drawing.Point(22, 271);
-            this.lblWordTwoDjan.Name = "lblWordTwoDjan";
-            this.lblWordTwoDjan.Size = new System.Drawing.Size(16, 13);
-            this.lblWordTwoDjan.TabIndex = 7;
-            this.lblWordTwoDjan.Text = "---";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(549, 261);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(16, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "---";
-            // 
-            // lblWordThreeDjan
-            // 
-            this.lblWordThreeDjan.AutoSize = true;
-            this.lblWordThreeDjan.Location = new System.Drawing.Point(22, 311);
-            this.lblWordThreeDjan.Name = "lblWordThreeDjan";
-            this.lblWordThreeDjan.Size = new System.Drawing.Size(16, 13);
-            this.lblWordThreeDjan.TabIndex = 8;
-            this.lblWordThreeDjan.Text = "---";
-            // 
-            // lblWordFourDjan
-            // 
-            this.lblWordFourDjan.AutoSize = true;
-            this.lblWordFourDjan.Location = new System.Drawing.Point(22, 353);
-            this.lblWordFourDjan.Name = "lblWordFourDjan";
-            this.lblWordFourDjan.Size = new System.Drawing.Size(16, 13);
-            this.lblWordFourDjan.TabIndex = 9;
-            this.lblWordFourDjan.Text = "---";
-            // 
-            // lblWordFiveDjan
-            // 
-            this.lblWordFiveDjan.AutoSize = true;
-            this.lblWordFiveDjan.Location = new System.Drawing.Point(22, 393);
-            this.lblWordFiveDjan.Name = "lblWordFiveDjan";
-            this.lblWordFiveDjan.Size = new System.Drawing.Size(16, 13);
-            this.lblWordFiveDjan.TabIndex = 10;
-            this.lblWordFiveDjan.Text = "---";
-            // 
-            // cbxFourDjan
-            // 
-            this.cbxFourDjan.AutoSize = true;
-            this.cbxFourDjan.Location = new System.Drawing.Point(275, 349);
-            this.cbxFourDjan.Name = "cbxFourDjan";
-            this.cbxFourDjan.Size = new System.Drawing.Size(80, 17);
-            this.cbxFourDjan.TabIndex = 11;
-            this.cbxFourDjan.Text = "checkBox2";
-            this.cbxFourDjan.UseVisualStyleBackColor = true;
-            // 
-            // cbxTwoDjan
-            // 
-            this.cbxTwoDjan.AutoSize = true;
-            this.cbxTwoDjan.Location = new System.Drawing.Point(275, 267);
-            this.cbxTwoDjan.Name = "cbxTwoDjan";
-            this.cbxTwoDjan.Size = new System.Drawing.Size(80, 17);
-            this.cbxTwoDjan.TabIndex = 11;
-            this.cbxTwoDjan.Text = "checkBox2";
-            this.cbxTwoDjan.UseVisualStyleBackColor = true;
-            // 
-            // cbxThreeDjan
-            // 
-            this.cbxThreeDjan.AutoSize = true;
-            this.cbxThreeDjan.Location = new System.Drawing.Point(275, 307);
-            this.cbxThreeDjan.Name = "cbxThreeDjan";
-            this.cbxThreeDjan.Size = new System.Drawing.Size(80, 17);
-            this.cbxThreeDjan.TabIndex = 12;
-            this.cbxThreeDjan.Text = "checkBox4";
-            this.cbxThreeDjan.UseVisualStyleBackColor = true;
-            // 
-            // cbxFiveDjan
-            // 
-            this.cbxFiveDjan.AutoSize = true;
-            this.cbxFiveDjan.Location = new System.Drawing.Point(275, 389);
-            this.cbxFiveDjan.Name = "cbxFiveDjan";
-            this.cbxFiveDjan.Size = new System.Drawing.Size(80, 17);
-            this.cbxFiveDjan.TabIndex = 13;
-            this.cbxFiveDjan.Text = "checkBox5";
-            this.cbxFiveDjan.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,7 +483,6 @@
         private System.Windows.Forms.Label lblWordFiveDjan;
         private System.Windows.Forms.Label lblWordFourDjan;
         private System.Windows.Forms.Label lblWordThreeDjan;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblWordTwoDjan;
         private System.Windows.Forms.Label lblWordOneDjan;
         private System.Windows.Forms.CheckBox cbxOneDjan;

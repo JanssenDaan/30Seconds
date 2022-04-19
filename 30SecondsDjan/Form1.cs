@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -156,12 +157,14 @@ namespace _30SecondsDjan
             {
                 lblTeamFourDjan.Text = $"Team {GameDetails.TeamsDjan[3].TeamName} Score: {GameDetails.ScoreT4Djan.ToString()}";
             }
-            h
+            
 
         }
 
         private void GetNextPlayerDjan()
         {
+            var CurrentDirectory = Directory.GetCurrentDirectory();
+            h.PlaySound(CurrentDirectory + "\\wait.wav");
             if (GameDetails.GamePlayerID == GameDetails.Players.Count)
             {
                 GameDetails.GamePlayerID = 0;
@@ -193,7 +196,7 @@ namespace _30SecondsDjan
 
         private void btnNextPlayer_Click(object sender, EventArgs e)
         {
-            //VERANDEREN NAAR 30
+            
             ChangeWordsDjan();
 
             lblTeamOneDjan.Text = $"Team {GameDetails.TeamsDjan[0].TeamName} Score: {GameDetails.ScoreT1Djan.ToString()}";
@@ -256,25 +259,25 @@ namespace _30SecondsDjan
                 }
             }
 
-            if (GameDetails.ScoreT1Djan >= 10)
+            if (GameDetails.ScoreT1Djan >= 30)
             {
                 h.ShowMessage($"Team: {GameDetails.TeamsDjan[0].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[0].TeamName)} has won!");
                 btnNextPlayer.Visible = false;
                 return;
             }
-            if (GameDetails.ScoreT2Djan >= 10)
+            if (GameDetails.ScoreT2Djan >= 30)
             {
                 h.ShowMessage($"Team: {GameDetails.TeamsDjan[1].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[1].TeamName)} has won!");
                 btnNextPlayer.Visible = false;
                 return;
             }
-            if (GameDetails.ScoreT3Djan >= 10)
+            if (GameDetails.ScoreT3Djan >= 30)
             {
                 h.ShowMessage($"Team: {GameDetails.TeamsDjan[2].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[2].TeamName)} has won!"); 
                 btnNextPlayer.Visible = false;
                 return;
             }
-            if (GameDetails.ScoreT4Djan >= 10)
+            if (GameDetails.ScoreT4Djan >= 30)
             {
                 h.ShowMessage($"Team: {GameDetails.TeamsDjan[3].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[3].TeamName)} has won!"); 
                 btnNextPlayer.Visible = false;
