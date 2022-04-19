@@ -1,6 +1,8 @@
-﻿using DjanControls;
+﻿using _30SecondsDjan.Objects;
+using DjanControls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -17,9 +19,14 @@ namespace _30SecondsDjan
         public Helpers h = new Helpers();
         public UCPlayerDjan PlayerControlDjan = new UCPlayerDjan();
         public UCTeam TeamControlDjan = new UCTeam();
+        public ObservableCollection<Player> SelectedPlayersDjan = new ObservableCollection<Player>();
         public int CurrentIDPlayersDjan { get; set; } = 1;
         public int CurrentIDTeamsDjan { get; set; } = 1;
         public List<UCTeam> ucTeamList = new List<UCTeam>();
+        public List<UCPlayerDjan> UCPlayerListDjan = new List<UCPlayerDjan>();
+        public GameDetails GameDetails = new GameDetails();
+
+
 
         public MainForm()
         {
@@ -61,21 +68,56 @@ namespace _30SecondsDjan
         private void btnToGameSettingsDjan_Click(object sender, EventArgs e)
         {
             tclOne.SelectedTab = tbpGameDjan;
-            ucTeamList = MainForm.instance.pnlTeamsDjan.Controls.OfType<UCTeam>().ToList(); ;
+            ucTeamList = pnlTeamsDjan.Controls.OfType<UCTeam>().ToList(); ;
 
             foreach (UCTeam team in ucTeamList)
             {
                 lbxTeamsDjan.Items.Add(team.TeamDjan);
-                
             }
 
-            
-
+            lbxTeamsDjan.DisplayMember = "TeamName";
+            lbxTeamsDjan.ValueMember = "TeamName";
         }
 
         private void lbxTeamsDjan_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SelectedPlayersDjan.Clear();
+            lbxPlayersDjan.Items.Clear();
+            if (sender is ListBox listBox)
+            {
+                
+                    UCPlayerListDjan = pnlPlayersDjan.Controls.OfType<UCPlayerDjan>().ToList(); ;
+                    foreach (UCPlayerDjan uc in UCPlayerListDjan)
+                    {
+                    if (uc.PlayerDjan.TeamName == listBox.Text)
+                    {
+                        SelectedPlayersDjan.Add(uc.PlayerDjan);
+                    }
+                }
+                
+            }
+            
 
+            lbxPlayersDjan.DisplayMember = "Player.Playername";
+            foreach (Player p in SelectedPlayersDjan)
+            {
+                lbxPlayersDjan.Items.Add(p);
+            }
+
+        }
+
+        private void btnStartGameDjan_Click(object sender, EventArgs e)
+        {
+            tclOne.SelectedTab = tbpGameDjan;
+            foreach (UCPlayerDjan p in UCPlayerListDjan)
+            {
+                GameDetails.Players.Add(p.PlayerDjan);
+            }
+
+            foreach (UCTeam t in ucTeamList)
+            {
+                GameDetails.TeamsDjan.Add(t.TeamDjan);
+            }
         }
     }
 }

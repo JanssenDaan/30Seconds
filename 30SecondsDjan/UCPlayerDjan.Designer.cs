@@ -55,6 +55,7 @@
             this.cbxTeamDjan.Name = "cbxTeamDjan";
             this.cbxTeamDjan.Size = new System.Drawing.Size(121, 21);
             this.cbxTeamDjan.TabIndex = 1;
+            this.cbxTeamDjan.SelectedIndexChanged += new System.EventHandler(this.cbxTeamDjan_SelectedIndexChanged);
             this.cbxTeamDjan.Click += new System.EventHandler(this.cbxTeamDjan_Click);
             // 
             // lblTeamsDjan

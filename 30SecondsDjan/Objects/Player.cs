@@ -12,5 +12,6 @@ namespace _30SecondsDjan.Objects
         public int ID { get; set; }
         public string Playername { get; set; }
         public Color color { get; set; }
+        public string TeamName { get; set; }
     }
 }

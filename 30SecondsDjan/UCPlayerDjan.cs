@@ -52,5 +52,14 @@ namespace _30SecondsDjan
         {
             MainForm.instance.pnlPlayersDjan.Controls.Remove(this);
         }
+
+        private void cbxTeamDjan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sender is ComboBox cbx)
+            {
+                PlayerDjan.TeamName = cbx.Text;
+            }
+            
+        }
     }
 }
