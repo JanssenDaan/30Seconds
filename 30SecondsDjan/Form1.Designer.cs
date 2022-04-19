@@ -28,22 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tclOne = new System.Windows.Forms.TabControl();
             this.tbpHomeDjan = new System.Windows.Forms.TabPage();
+            this.btnToGameSettingsDjan = new System.Windows.Forms.Button();
             this.pnlTeamsDjan = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddTeamsDjan = new System.Windows.Forms.Button();
             this.pnlPlayersDjan = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddPlayer = new System.Windows.Forms.Button();
             this.tbpGameDjan = new System.Windows.Forms.TabPage();
-            this.tbpPlayDjan = new System.Windows.Forms.TabPage();
-            this.btnToGameSettingsDjan = new System.Windows.Forms.Button();
-            this.lbxTeamsDjan = new System.Windows.Forms.ListBox();
-            this.btnStopGameDjan = new System.Windows.Forms.Button();
-            this.lbxPlayersDjan = new System.Windows.Forms.ListBox();
             this.btnStartGameDjan = new System.Windows.Forms.Button();
+            this.lbxPlayersDjan = new System.Windows.Forms.ListBox();
+            this.btnStopGameDjan = new System.Windows.Forms.Button();
+            this.lbxTeamsDjan = new System.Windows.Forms.ListBox();
+            this.tbpPlayDjan = new System.Windows.Forms.TabPage();
+            this.pgbTimeDjan = new CircularProgressBar.CircularProgressBar();
+            this.btnStartPlayDjan = new System.Windows.Forms.Button();
+            this.lblCurrentPlayerDjan = new System.Windows.Forms.Label();
+            this.tmrGamePlayDjan = new System.Windows.Forms.Timer(this.components);
+            this.e = new System.Windows.Forms.GroupBox();
+            this.lblTeamOneDjan = new System.Windows.Forms.Label();
+            this.lblTeamTwoDjan = new System.Windows.Forms.Label();
+            this.lblTeamThreeDjan = new System.Windows.Forms.Label();
+            this.lblTeamFourDjan = new System.Windows.Forms.Label();
+            this.btnNextPlayer = new System.Windows.Forms.Button();
             this.tclOne.SuspendLayout();
             this.tbpHomeDjan.SuspendLayout();
             this.tbpGameDjan.SuspendLayout();
+            this.tbpPlayDjan.SuspendLayout();
+            this.e.SuspendLayout();
             this.SuspendLayout();
             // 
             // tclOne
@@ -72,6 +85,17 @@
             this.tbpHomeDjan.TabIndex = 0;
             this.tbpHomeDjan.Text = "Home";
             this.tbpHomeDjan.UseVisualStyleBackColor = true;
+            // 
+            // btnToGameSettingsDjan
+            // 
+            this.btnToGameSettingsDjan.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToGameSettingsDjan.Location = new System.Drawing.Point(858, 6);
+            this.btnToGameSettingsDjan.Name = "btnToGameSettingsDjan";
+            this.btnToGameSettingsDjan.Size = new System.Drawing.Size(248, 83);
+            this.btnToGameSettingsDjan.TabIndex = 5;
+            this.btnToGameSettingsDjan.Text = "Next";
+            this.btnToGameSettingsDjan.UseVisualStyleBackColor = true;
+            this.btnToGameSettingsDjan.Click += new System.EventHandler(this.btnToGameSettingsDjan_Click);
             // 
             // pnlTeamsDjan
             // 
@@ -123,52 +147,6 @@
             this.tbpGameDjan.Text = "Game";
             this.tbpGameDjan.UseVisualStyleBackColor = true;
             // 
-            // tbpPlayDjan
-            // 
-            this.tbpPlayDjan.Location = new System.Drawing.Point(4, 22);
-            this.tbpPlayDjan.Name = "tbpPlayDjan";
-            this.tbpPlayDjan.Size = new System.Drawing.Size(1114, 535);
-            this.tbpPlayDjan.TabIndex = 2;
-            this.tbpPlayDjan.Text = "Play";
-            this.tbpPlayDjan.UseVisualStyleBackColor = true;
-            // 
-            // btnToGameSettingsDjan
-            // 
-            this.btnToGameSettingsDjan.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToGameSettingsDjan.Location = new System.Drawing.Point(858, 6);
-            this.btnToGameSettingsDjan.Name = "btnToGameSettingsDjan";
-            this.btnToGameSettingsDjan.Size = new System.Drawing.Size(248, 83);
-            this.btnToGameSettingsDjan.TabIndex = 5;
-            this.btnToGameSettingsDjan.Text = "Next";
-            this.btnToGameSettingsDjan.UseVisualStyleBackColor = true;
-            this.btnToGameSettingsDjan.Click += new System.EventHandler(this.btnToGameSettingsDjan_Click);
-            // 
-            // lbxTeamsDjan
-            // 
-            this.lbxTeamsDjan.FormattingEnabled = true;
-            this.lbxTeamsDjan.Location = new System.Drawing.Point(155, 6);
-            this.lbxTeamsDjan.Name = "lbxTeamsDjan";
-            this.lbxTeamsDjan.Size = new System.Drawing.Size(161, 329);
-            this.lbxTeamsDjan.TabIndex = 0;
-            this.lbxTeamsDjan.SelectedIndexChanged += new System.EventHandler(this.lbxTeamsDjan_SelectedIndexChanged);
-            // 
-            // btnStopGameDjan
-            // 
-            this.btnStopGameDjan.Location = new System.Drawing.Point(9, 7);
-            this.btnStopGameDjan.Name = "btnStopGameDjan";
-            this.btnStopGameDjan.Size = new System.Drawing.Size(140, 63);
-            this.btnStopGameDjan.TabIndex = 1;
-            this.btnStopGameDjan.Text = "Stop Game";
-            this.btnStopGameDjan.UseVisualStyleBackColor = true;
-            // 
-            // lbxPlayersDjan
-            // 
-            this.lbxPlayersDjan.FormattingEnabled = true;
-            this.lbxPlayersDjan.Location = new System.Drawing.Point(363, 7);
-            this.lbxPlayersDjan.Name = "lbxPlayersDjan";
-            this.lbxPlayersDjan.Size = new System.Drawing.Size(161, 329);
-            this.lbxPlayersDjan.TabIndex = 2;
-            // 
             // btnStartGameDjan
             // 
             this.btnStartGameDjan.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,6 +157,165 @@
             this.btnStartGameDjan.Text = "Start Game!";
             this.btnStartGameDjan.UseVisualStyleBackColor = true;
             this.btnStartGameDjan.Click += new System.EventHandler(this.btnStartGameDjan_Click);
+            // 
+            // lbxPlayersDjan
+            // 
+            this.lbxPlayersDjan.FormattingEnabled = true;
+            this.lbxPlayersDjan.Location = new System.Drawing.Point(363, 7);
+            this.lbxPlayersDjan.Name = "lbxPlayersDjan";
+            this.lbxPlayersDjan.Size = new System.Drawing.Size(161, 329);
+            this.lbxPlayersDjan.TabIndex = 2;
+            // 
+            // btnStopGameDjan
+            // 
+            this.btnStopGameDjan.Location = new System.Drawing.Point(9, 7);
+            this.btnStopGameDjan.Name = "btnStopGameDjan";
+            this.btnStopGameDjan.Size = new System.Drawing.Size(140, 63);
+            this.btnStopGameDjan.TabIndex = 1;
+            this.btnStopGameDjan.Text = "Stop Game";
+            this.btnStopGameDjan.UseVisualStyleBackColor = true;
+            // 
+            // lbxTeamsDjan
+            // 
+            this.lbxTeamsDjan.FormattingEnabled = true;
+            this.lbxTeamsDjan.Location = new System.Drawing.Point(155, 6);
+            this.lbxTeamsDjan.Name = "lbxTeamsDjan";
+            this.lbxTeamsDjan.Size = new System.Drawing.Size(161, 329);
+            this.lbxTeamsDjan.TabIndex = 0;
+            this.lbxTeamsDjan.SelectedIndexChanged += new System.EventHandler(this.lbxTeamsDjan_SelectedIndexChanged);
+            // 
+            // tbpPlayDjan
+            // 
+            this.tbpPlayDjan.Controls.Add(this.btnNextPlayer);
+            this.tbpPlayDjan.Controls.Add(this.e);
+            this.tbpPlayDjan.Controls.Add(this.pgbTimeDjan);
+            this.tbpPlayDjan.Controls.Add(this.btnStartPlayDjan);
+            this.tbpPlayDjan.Controls.Add(this.lblCurrentPlayerDjan);
+            this.tbpPlayDjan.Location = new System.Drawing.Point(4, 22);
+            this.tbpPlayDjan.Name = "tbpPlayDjan";
+            this.tbpPlayDjan.Size = new System.Drawing.Size(1114, 535);
+            this.tbpPlayDjan.TabIndex = 2;
+            this.tbpPlayDjan.Text = "Play";
+            this.tbpPlayDjan.UseVisualStyleBackColor = true;
+            // 
+            // pgbTimeDjan
+            // 
+            this.pgbTimeDjan.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.pgbTimeDjan.AnimationSpeed = 500;
+            this.pgbTimeDjan.BackColor = System.Drawing.Color.Transparent;
+            this.pgbTimeDjan.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold);
+            this.pgbTimeDjan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pgbTimeDjan.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pgbTimeDjan.InnerMargin = 2;
+            this.pgbTimeDjan.InnerWidth = -1;
+            this.pgbTimeDjan.Location = new System.Drawing.Point(841, 251);
+            this.pgbTimeDjan.MarqueeAnimationSpeed = 2000;
+            this.pgbTimeDjan.Maximum = 30;
+            this.pgbTimeDjan.Name = "pgbTimeDjan";
+            this.pgbTimeDjan.OuterColor = System.Drawing.Color.Black;
+            this.pgbTimeDjan.OuterMargin = -25;
+            this.pgbTimeDjan.OuterWidth = 26;
+            this.pgbTimeDjan.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pgbTimeDjan.ProgressWidth = 25;
+            this.pgbTimeDjan.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.pgbTimeDjan.Size = new System.Drawing.Size(256, 259);
+            this.pgbTimeDjan.StartAngle = 270;
+            this.pgbTimeDjan.Step = 1;
+            this.pgbTimeDjan.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pgbTimeDjan.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.pgbTimeDjan.SubscriptText = "";
+            this.pgbTimeDjan.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pgbTimeDjan.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.pgbTimeDjan.SuperscriptText = "";
+            this.pgbTimeDjan.TabIndex = 2;
+            this.pgbTimeDjan.Text = "30";
+            this.pgbTimeDjan.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.pgbTimeDjan.Value = 30;
+            // 
+            // btnStartPlayDjan
+            // 
+            this.btnStartPlayDjan.Location = new System.Drawing.Point(482, 18);
+            this.btnStartPlayDjan.Name = "btnStartPlayDjan";
+            this.btnStartPlayDjan.Size = new System.Drawing.Size(75, 23);
+            this.btnStartPlayDjan.TabIndex = 1;
+            this.btnStartPlayDjan.Text = "Start Game";
+            this.btnStartPlayDjan.UseVisualStyleBackColor = true;
+            this.btnStartPlayDjan.Click += new System.EventHandler(this.btnStartPlayDjan_Click);
+            // 
+            // lblCurrentPlayerDjan
+            // 
+            this.lblCurrentPlayerDjan.AutoSize = true;
+            this.lblCurrentPlayerDjan.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentPlayerDjan.Location = new System.Drawing.Point(19, 18);
+            this.lblCurrentPlayerDjan.Name = "lblCurrentPlayerDjan";
+            this.lblCurrentPlayerDjan.Size = new System.Drawing.Size(156, 25);
+            this.lblCurrentPlayerDjan.TabIndex = 0;
+            this.lblCurrentPlayerDjan.Text = "CurrentPlayer: ";
+            // 
+            // tmrGamePlayDjan
+            // 
+            this.tmrGamePlayDjan.Enabled = true;
+            this.tmrGamePlayDjan.Interval = 1000;
+            this.tmrGamePlayDjan.Tick += new System.EventHandler(this.tmrGamePlayDjan_Tick);
+            // 
+            // e
+            // 
+            this.e.Controls.Add(this.lblTeamFourDjan);
+            this.e.Controls.Add(this.lblTeamThreeDjan);
+            this.e.Controls.Add(this.lblTeamTwoDjan);
+            this.e.Controls.Add(this.lblTeamOneDjan);
+            this.e.Location = new System.Drawing.Point(806, 3);
+            this.e.Name = "e";
+            this.e.Size = new System.Drawing.Size(305, 242);
+            this.e.TabIndex = 3;
+            this.e.TabStop = false;
+            this.e.Text = "GameStats";
+            // 
+            // lblTeamOneDjan
+            // 
+            this.lblTeamOneDjan.AutoSize = true;
+            this.lblTeamOneDjan.Location = new System.Drawing.Point(7, 24);
+            this.lblTeamOneDjan.Name = "lblTeamOneDjan";
+            this.lblTeamOneDjan.Size = new System.Drawing.Size(10, 13);
+            this.lblTeamOneDjan.TabIndex = 0;
+            this.lblTeamOneDjan.Text = "-";
+            // 
+            // lblTeamTwoDjan
+            // 
+            this.lblTeamTwoDjan.AutoSize = true;
+            this.lblTeamTwoDjan.Location = new System.Drawing.Point(7, 46);
+            this.lblTeamTwoDjan.Name = "lblTeamTwoDjan";
+            this.lblTeamTwoDjan.Size = new System.Drawing.Size(10, 13);
+            this.lblTeamTwoDjan.TabIndex = 1;
+            this.lblTeamTwoDjan.Text = "-";
+            // 
+            // lblTeamThreeDjan
+            // 
+            this.lblTeamThreeDjan.AutoSize = true;
+            this.lblTeamThreeDjan.Location = new System.Drawing.Point(7, 69);
+            this.lblTeamThreeDjan.Name = "lblTeamThreeDjan";
+            this.lblTeamThreeDjan.Size = new System.Drawing.Size(10, 13);
+            this.lblTeamThreeDjan.TabIndex = 2;
+            this.lblTeamThreeDjan.Text = "-";
+            // 
+            // lblTeamFourDjan
+            // 
+            this.lblTeamFourDjan.AutoSize = true;
+            this.lblTeamFourDjan.Location = new System.Drawing.Point(7, 92);
+            this.lblTeamFourDjan.Name = "lblTeamFourDjan";
+            this.lblTeamFourDjan.Size = new System.Drawing.Size(10, 13);
+            this.lblTeamFourDjan.TabIndex = 3;
+            this.lblTeamFourDjan.Text = "-";
+            // 
+            // btnNextPlayer
+            // 
+            this.btnNextPlayer.Location = new System.Drawing.Point(482, 49);
+            this.btnNextPlayer.Name = "btnNextPlayer";
+            this.btnNextPlayer.Size = new System.Drawing.Size(75, 23);
+            this.btnNextPlayer.TabIndex = 4;
+            this.btnNextPlayer.Text = "Next";
+            this.btnNextPlayer.UseVisualStyleBackColor = true;
+            this.btnNextPlayer.Click += new System.EventHandler(this.btnNextPlayer_Click);
             // 
             // MainForm
             // 
@@ -191,6 +328,10 @@
             this.tclOne.ResumeLayout(false);
             this.tbpHomeDjan.ResumeLayout(false);
             this.tbpGameDjan.ResumeLayout(false);
+            this.tbpPlayDjan.ResumeLayout(false);
+            this.tbpPlayDjan.PerformLayout();
+            this.e.ResumeLayout(false);
+            this.e.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -210,6 +351,16 @@
         private System.Windows.Forms.Button btnStopGameDjan;
         private System.Windows.Forms.ListBox lbxPlayersDjan;
         private System.Windows.Forms.Button btnStartGameDjan;
+        private System.Windows.Forms.Label lblCurrentPlayerDjan;
+        private System.Windows.Forms.Button btnStartPlayDjan;
+        private CircularProgressBar.CircularProgressBar pgbTimeDjan;
+        private System.Windows.Forms.Timer tmrGamePlayDjan;
+        private System.Windows.Forms.GroupBox e;
+        private System.Windows.Forms.Label lblTeamFourDjan;
+        private System.Windows.Forms.Label lblTeamThreeDjan;
+        private System.Windows.Forms.Label lblTeamTwoDjan;
+        private System.Windows.Forms.Label lblTeamOneDjan;
+        private System.Windows.Forms.Button btnNextPlayer;
     }
 }
 

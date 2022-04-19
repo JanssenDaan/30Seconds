@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace _30SecondsDjan
@@ -25,8 +26,10 @@ namespace _30SecondsDjan
         public List<UCTeam> ucTeamList = new List<UCTeam>();
         public List<UCPlayerDjan> UCPlayerListDjan = new List<UCPlayerDjan>();
         public GameDetails GameDetails = new GameDetails();
+        public ReadFileForm ReadFileForm = new ReadFileForm();
+        public List<string> WordsDjan = new List<string>();
 
-
+        public int Countdown { get; set; }
 
         public MainForm()
         {
@@ -94,7 +97,6 @@ namespace _30SecondsDjan
                         SelectedPlayersDjan.Add(uc.PlayerDjan);
                     }
                 }
-                
             }
             
 
@@ -108,8 +110,7 @@ namespace _30SecondsDjan
 
         private void btnStartGameDjan_Click(object sender, EventArgs e)
         {
-            tclOne.SelectedTab = tbpGameDjan;
-            foreach (UCPlayerDjan p in UCPlayerListDjan)
+            foreach (UCPlayerDjan p in pnlPlayersDjan.Controls.OfType<UCPlayerDjan>().ToList())
             {
                 GameDetails.Players.Add(p.PlayerDjan);
             }
@@ -118,6 +119,64 @@ namespace _30SecondsDjan
             {
                 GameDetails.TeamsDjan.Add(t.TeamDjan);
             }
+
+            ReadFileForm.Show();
+        }
+
+        public void GoToGameDjan(List<string> list)
+        {
+            tclOne.SelectedTab = tbpPlayDjan;
+            WordsDjan = list;
+            
+        }
+
+        private void btnStartPlayDjan_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                btn.Visible = false;
+                tmrGamePlayDjan.Start();
+                Countdown = 5;
+            }
+            btnNextPlayer.Visible = false;
+            GetNextPlayerDjan();
+        }
+
+        private void GetNextPlayerDjan()
+        {
+            if (GameDetails.GamePlayerID == GameDetails.Players.Count)
+            {
+                GameDetails.GamePlayerID = 0;
+            }
+            GameDetails.CurrentPlayer = GameDetails.Players[GameDetails.GamePlayerID].Playername;
+
+            lblCurrentPlayerDjan.Text = $"Current Player: {GameDetails.CurrentPlayer}  \nFrom Team: {GameDetails.Players[GameDetails.GamePlayerID].TeamName}";
+            GameDetails.GamePlayerID++;
+        }
+
+        private void tmrGamePlayDjan_Tick(object sender, EventArgs e)
+        {
+            if (Countdown == 0)
+            {
+                tmrGamePlayDjan.Stop();
+                pgbTimeDjan.Value = 0;
+                pgbTimeDjan.Text = 0.ToString();
+                btnNextPlayer.Visible = true;
+            }
+            else
+            {
+                pgbTimeDjan.Text = Countdown.ToString();
+                pgbTimeDjan.Value = Countdown;
+            }
+            Countdown--;
+        }
+
+        private void btnNextPlayer_Click(object sender, EventArgs e)
+        {
+            Countdown = 5;
+            GetNextPlayerDjan();
+            tmrGamePlayDjan.Start();
+            btnNextPlayer.Visible = false;
         }
     }
 }
