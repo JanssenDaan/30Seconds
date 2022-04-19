@@ -7,8 +7,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace _30SecondsDjan
@@ -25,8 +27,12 @@ namespace _30SecondsDjan
         public List<UCTeam> ucTeamList = new List<UCTeam>();
         public List<UCPlayerDjan> UCPlayerListDjan = new List<UCPlayerDjan>();
         public GameDetails GameDetails = new GameDetails();
+        public ReadFileForm ReadFileForm = new ReadFileForm();
+        public List<string> WordsDjan = new List<string>();
+        public List<string> WordsDoneDjan = new List<string>();
 
-
+        public string playerNames { get; set; }
+        public int Countdown { get; set; }
 
         public MainForm()
         {
@@ -94,7 +100,6 @@ namespace _30SecondsDjan
                         SelectedPlayersDjan.Add(uc.PlayerDjan);
                     }
                 }
-                
             }
             
 
@@ -108,8 +113,7 @@ namespace _30SecondsDjan
 
         private void btnStartGameDjan_Click(object sender, EventArgs e)
         {
-            tclOne.SelectedTab = tbpGameDjan;
-            foreach (UCPlayerDjan p in UCPlayerListDjan)
+            foreach (UCPlayerDjan p in pnlPlayersDjan.Controls.OfType<UCPlayerDjan>().ToList())
             {
                 GameDetails.Players.Add(p.PlayerDjan);
             }
@@ -118,6 +122,215 @@ namespace _30SecondsDjan
             {
                 GameDetails.TeamsDjan.Add(t.TeamDjan);
             }
+
+            ReadFileForm.Show();
+        }
+
+        public void GoToGameDjan(List<string> list)
+        {
+            tclOne.SelectedTab = tbpPlayDjan;
+            WordsDjan = list;
+            
+        }
+
+        private void btnStartPlayDjan_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                btn.Visible = false;
+                tmrGamePlayDjan.Start();
+                Countdown = 5;
+            }
+            btnNextPlayer.Visible = false;
+            GetNextPlayerDjan();
+            ChangeWordsDjan();
+            lblTeamOneDjan.Text = $"Team {GameDetails.TeamsDjan[0].TeamName} Score: {GameDetails.ScoreT1Djan.ToString()}";
+            lblTeamTwoDjan.Text = $"Team {GameDetails.TeamsDjan[1].TeamName} Score: {GameDetails.ScoreT2Djan.ToString()}";
+
+
+            if (GameDetails.TeamsDjan.Count == 3 || GameDetails.TeamsDjan.Count == 4)
+            {
+                lblTeamThreeDjan.Text = $"Team {GameDetails.TeamsDjan[2].TeamName} Score: {GameDetails.ScoreT3Djan.ToString()}";
+            }
+            if (GameDetails.TeamsDjan.Count == 4)
+            {
+                lblTeamFourDjan.Text = $"Team {GameDetails.TeamsDjan[3].TeamName} Score: {GameDetails.ScoreT4Djan.ToString()}";
+            }
+            h
+
+        }
+
+        private void GetNextPlayerDjan()
+        {
+            if (GameDetails.GamePlayerID == GameDetails.Players.Count)
+            {
+                GameDetails.GamePlayerID = 0;
+            }
+            GameDetails.CurrentPlayer = GameDetails.Players[GameDetails.GamePlayerID].Playername;
+
+            lblCurrentPlayerDjan.Text = $"Current Player: {GameDetails.CurrentPlayer}  \nFrom Team: {GameDetails.Players[GameDetails.GamePlayerID].TeamName}";
+
+            GameDetails.CurrentTeam = GameDetails.Players[GameDetails.GamePlayerID].TeamName;
+            GameDetails.GamePlayerID++;
+        }
+
+        private void tmrGamePlayDjan_Tick(object sender, EventArgs e)
+        {
+            if (Countdown == 0)
+            {
+                tmrGamePlayDjan.Stop();
+                pgbTimeDjan.Value = 0;
+                pgbTimeDjan.Text = 0.ToString();
+                btnNextPlayer.Visible = true;
+            }
+            else
+            {
+                pgbTimeDjan.Text = Countdown.ToString();
+                pgbTimeDjan.Value = Countdown;
+            }
+            Countdown--;
+        }
+
+        private void btnNextPlayer_Click(object sender, EventArgs e)
+        {
+            //VERANDEREN NAAR 30
+            ChangeWordsDjan();
+
+            lblTeamOneDjan.Text = $"Team {GameDetails.TeamsDjan[0].TeamName} Score: {GameDetails.ScoreT1Djan.ToString()}";
+            lblTeamTwoDjan.Text = $"Team {GameDetails.TeamsDjan[1].TeamName} Score: {GameDetails.ScoreT2Djan.ToString()}";
+            
+
+            if (GameDetails.TeamsDjan.Count == 3 || GameDetails.TeamsDjan.Count == 4)
+            {
+                lblTeamThreeDjan.Text = $"Team {GameDetails.TeamsDjan[2].TeamName} Score: {GameDetails.ScoreT3Djan.ToString()}";
+            }
+            if (GameDetails.TeamsDjan.Count == 4)
+            {
+                lblTeamFourDjan.Text = $"Team {GameDetails.TeamsDjan[3].TeamName} Score: {GameDetails.ScoreT4Djan.ToString()}";
+            }
+
+            if (GameDetails.CurrentTeam == GameDetails.TeamsDjan[0].TeamName)
+            {
+                GameDetails.ScoreT1Djan = GameDetails.ScoreT1Djan + 
+                    Convert.ToInt32(cbxOneDjan.Checked) + 
+                    Convert.ToInt32(cbxTwoDjan.Checked) + 
+                    Convert.ToInt32(cbxThreeDjan.Checked) + 
+                    Convert.ToInt32(cbxFourDjan.Checked) + 
+                    Convert.ToInt32(cbxFiveDjan.Checked);
+                lblTeamOneDjan.Text = $"Team {GameDetails.TeamsDjan[0].TeamName} Score: {GameDetails.ScoreT1Djan.ToString()}";
+            }
+            if (GameDetails.CurrentTeam == GameDetails.TeamsDjan[1].TeamName)
+            {
+                GameDetails.ScoreT2Djan = GameDetails.ScoreT2Djan + 
+                    Convert.ToInt32(cbxOneDjan.Checked) +
+                    Convert.ToInt32(cbxTwoDjan.Checked) +
+                    Convert.ToInt32(cbxThreeDjan.Checked) +
+                    Convert.ToInt32(cbxFourDjan.Checked) +
+                    Convert.ToInt32(cbxFiveDjan.Checked); 
+                lblTeamTwoDjan.Text = $"Team {GameDetails.TeamsDjan[1].TeamName} Score: {GameDetails.ScoreT2Djan.ToString()}";
+            }
+            if (GameDetails.TeamsDjan.Count == 3 || GameDetails.TeamsDjan.Count == 4)
+            {
+                if (GameDetails.CurrentTeam == GameDetails.TeamsDjan[2].TeamName)
+                {
+                    GameDetails.ScoreT3Djan = GameDetails.ScoreT3Djan +
+                    Convert.ToInt32(cbxOneDjan.Checked) +
+                    Convert.ToInt32(cbxTwoDjan.Checked) +
+                    Convert.ToInt32(cbxThreeDjan.Checked) +
+                    Convert.ToInt32(cbxFourDjan.Checked) +
+                    Convert.ToInt32(cbxFiveDjan.Checked);
+                    lblTeamThreeDjan.Text = $"Team {GameDetails.TeamsDjan[2].TeamName} Score: {GameDetails.ScoreT3Djan.ToString()}";
+                }
+            }
+            if (GameDetails.TeamsDjan.Count == 4)
+            {
+                if (GameDetails.CurrentTeam == GameDetails.TeamsDjan[3].TeamName)
+                {
+                    GameDetails.ScoreT4Djan = GameDetails.ScoreT4Djan +
+                     Convert.ToInt32(cbxOneDjan.Checked) +
+                     Convert.ToInt32(cbxTwoDjan.Checked) +
+                     Convert.ToInt32(cbxThreeDjan.Checked) +
+                     Convert.ToInt32(cbxFourDjan.Checked) +
+                     Convert.ToInt32(cbxFiveDjan.Checked);
+                    lblTeamFourDjan.Text = $"Team {GameDetails.TeamsDjan[3].TeamName} Score: {GameDetails.ScoreT4Djan.ToString()}";
+                }
+            }
+
+            if (GameDetails.ScoreT1Djan >= 10)
+            {
+                h.ShowMessage($"Team: {GameDetails.TeamsDjan[0].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[0].TeamName)} has won!");
+                btnNextPlayer.Visible = false;
+                return;
+            }
+            if (GameDetails.ScoreT2Djan >= 10)
+            {
+                h.ShowMessage($"Team: {GameDetails.TeamsDjan[1].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[1].TeamName)} has won!");
+                btnNextPlayer.Visible = false;
+                return;
+            }
+            if (GameDetails.ScoreT3Djan >= 10)
+            {
+                h.ShowMessage($"Team: {GameDetails.TeamsDjan[2].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[2].TeamName)} has won!"); 
+                btnNextPlayer.Visible = false;
+                return;
+            }
+            if (GameDetails.ScoreT4Djan >= 10)
+            {
+                h.ShowMessage($"Team: {GameDetails.TeamsDjan[3].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[3].TeamName)} has won!"); 
+                btnNextPlayer.Visible = false;
+                return;
+            }
+            Countdown = 5;
+            GetNextPlayerDjan();
+            tmrGamePlayDjan.Start();
+            btnNextPlayer.Visible = false;
+            cbxOneDjan.Checked = false;
+            cbxThreeDjan.Checked = false;
+            cbxTwoDjan.Checked = false;
+            cbxFourDjan.Checked = false;
+            cbxFiveDjan.Checked = false;
+        }
+
+        private void ChangeWordsDjan()
+        {
+            
+
+            lblWordOneDjan.Text = GetNextWord();
+            lblWordTwoDjan.Text = GetNextWord();
+            lblWordThreeDjan.Text = GetNextWord();
+            lblWordFourDjan.Text = GetNextWord();
+            lblWordFiveDjan.Text = GetNextWord();
+
+        }
+
+        public string GetNextWord()
+        {
+            string WordToReturnDjan = "";
+            int indexDjan = h.RandomNumber(1, WordsDjan.Count + 1);
+            WordToReturnDjan = WordsDjan[indexDjan];
+            if (WordsDoneDjan.Contains(WordsDjan[indexDjan]))
+            {
+                return GetNextWord();
+            }
+            else
+            {
+                WordsDoneDjan.Add(WordToReturnDjan);
+                return WordToReturnDjan;
+            }
+            return "";
+        }
+
+        public string GetPlayerNames(string TeamNameDjan)
+        {
+            playerNames = "";
+            foreach (Player player in GameDetails.Players)
+            {
+                if (player.TeamName == TeamNameDjan)
+                {
+                    playerNames = playerNames + $"{player.Playername}, ";
+                }
+            }
+            return playerNames;
         }
     }
 }
