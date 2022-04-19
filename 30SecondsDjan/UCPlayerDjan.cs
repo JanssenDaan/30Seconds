@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _30SecondsDjan.Objects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,13 @@ namespace _30SecondsDjan
 {
     public partial class UCPlayerDjan : UserControl
     {
+        public Player PlayerDjan = new Player();
         public List<UCTeam> UCTeamList { get; set; }
-        public int ID { get; set; }
         public UCPlayerDjan()
         {
+            
             InitializeComponent();
-            lblIDDjan.Text = $"ID: {ID}";
+            lblIDDjan.Text = $"ID: {PlayerDjan.ID}";
         }
 
         private void btnChangeColorDjan_Click(object sender, EventArgs e)
@@ -26,9 +28,8 @@ namespace _30SecondsDjan
             cdlColorDjan.FullOpen = true;
             cdlColorDjan.ShowDialog();
             this.BackColor = cdlColorDjan.Color;
+            PlayerDjan.color = cdlColorDjan.Color; 
         }
-
-       
 
         private void cbxTeamDjan_Click(object sender, EventArgs e)
         {
@@ -36,8 +37,14 @@ namespace _30SecondsDjan
             UCTeamList = MainForm.instance.pnlTeamsDjan.Controls.OfType<UCTeam>().ToList(); ;
             foreach (UCTeam uc in UCTeamList)
             {
-                cbxTeamDjan.Items.Add(uc.TeamName);
+                cbxTeamDjan.Items.Add(uc.TeamDjan.TeamName);
             }
+        }
+
+        private void tbxChangePlayernameDjan_TextChanged(object sender, EventArgs e)
+        {
+            lblPlayerNameDjan.Text = tbxChangePlayernameDjan.Text;
+            PlayerDjan.Playername = tbxChangePlayernameDjan.Text;
         }
     }
 }

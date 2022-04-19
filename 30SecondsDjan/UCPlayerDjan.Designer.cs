@@ -35,6 +35,7 @@
             this.lblPlayerDjan = new System.Windows.Forms.Label();
             this.btnChangeColorDjan = new System.Windows.Forms.Button();
             this.lblIDDjan = new System.Windows.Forms.Label();
+            this.tbxChangePlayernameDjan = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblPlayerNameDjan
@@ -92,10 +93,20 @@
             this.lblIDDjan.TabIndex = 5;
             this.lblIDDjan.Text = "ID: ";
             // 
+            // tbxChangePlayernameDjan
+            // 
+            this.tbxChangePlayernameDjan.Location = new System.Drawing.Point(6, 21);
+            this.tbxChangePlayernameDjan.Name = "tbxChangePlayernameDjan";
+            this.tbxChangePlayernameDjan.Size = new System.Drawing.Size(100, 20);
+            this.tbxChangePlayernameDjan.TabIndex = 6;
+            this.tbxChangePlayernameDjan.Text = "Change Playername";
+            this.tbxChangePlayernameDjan.TextChanged += new System.EventHandler(this.tbxChangePlayernameDjan_TextChanged);
+            // 
             // UCPlayerDjan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tbxChangePlayernameDjan);
             this.Controls.Add(this.lblIDDjan);
             this.Controls.Add(this.btnChangeColorDjan);
             this.Controls.Add(this.lblPlayerDjan);
@@ -110,13 +121,13 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblPlayerNameDjan;
         private System.Windows.Forms.ColorDialog cdlColorDjan;
         private System.Windows.Forms.ComboBox cbxTeamDjan;
         private System.Windows.Forms.Label lblTeamsDjan;
         private System.Windows.Forms.Label lblPlayerDjan;
         private System.Windows.Forms.Button btnChangeColorDjan;
         public System.Windows.Forms.Label lblIDDjan;
+        private System.Windows.Forms.TextBox tbxChangePlayernameDjan;
+        public System.Windows.Forms.Label lblPlayerNameDjan;
     }
 }

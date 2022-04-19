@@ -36,6 +36,7 @@
             this.btnAddPlayer = new System.Windows.Forms.Button();
             this.tbpGameDjan = new System.Windows.Forms.TabPage();
             this.tbpPlayDjan = new System.Windows.Forms.TabPage();
+            this.btnToGameSettingsDjan = new System.Windows.Forms.Button();
             this.tclOne.SuspendLayout();
             this.tbpHomeDjan.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             // 
             // tbpHomeDjan
             // 
+            this.tbpHomeDjan.Controls.Add(this.btnToGameSettingsDjan);
             this.tbpHomeDjan.Controls.Add(this.pnlTeamsDjan);
             this.tbpHomeDjan.Controls.Add(this.btnAddTeamsDjan);
             this.tbpHomeDjan.Controls.Add(this.pnlPlayersDjan);
@@ -69,14 +71,14 @@
             // pnlTeamsDjan
             // 
             this.pnlTeamsDjan.AutoScroll = true;
-            this.pnlTeamsDjan.Location = new System.Drawing.Point(785, 6);
+            this.pnlTeamsDjan.Location = new System.Drawing.Point(146, 6);
             this.pnlTeamsDjan.Name = "pnlTeamsDjan";
-            this.pnlTeamsDjan.Size = new System.Drawing.Size(321, 521);
+            this.pnlTeamsDjan.Size = new System.Drawing.Size(238, 521);
             this.pnlTeamsDjan.TabIndex = 4;
             // 
             // btnAddTeamsDjan
             // 
-            this.btnAddTeamsDjan.Location = new System.Drawing.Point(644, 6);
+            this.btnAddTeamsDjan.Location = new System.Drawing.Point(5, 6);
             this.btnAddTeamsDjan.Name = "btnAddTeamsDjan";
             this.btnAddTeamsDjan.Size = new System.Drawing.Size(135, 46);
             this.btnAddTeamsDjan.TabIndex = 2;
@@ -87,14 +89,14 @@
             // pnlPlayersDjan
             // 
             this.pnlPlayersDjan.AutoScroll = true;
-            this.pnlPlayersDjan.Location = new System.Drawing.Point(149, 6);
+            this.pnlPlayersDjan.Location = new System.Drawing.Point(531, 8);
             this.pnlPlayersDjan.Name = "pnlPlayersDjan";
             this.pnlPlayersDjan.Size = new System.Drawing.Size(321, 521);
             this.pnlPlayersDjan.TabIndex = 1;
             // 
             // btnAddPlayer
             // 
-            this.btnAddPlayer.Location = new System.Drawing.Point(8, 6);
+            this.btnAddPlayer.Location = new System.Drawing.Point(390, 8);
             this.btnAddPlayer.Name = "btnAddPlayer";
             this.btnAddPlayer.Size = new System.Drawing.Size(135, 46);
             this.btnAddPlayer.TabIndex = 0;
@@ -121,6 +123,16 @@
             this.tbpPlayDjan.Text = "Play";
             this.tbpPlayDjan.UseVisualStyleBackColor = true;
             // 
+            // btnToGameSettingsDjan
+            // 
+            this.btnToGameSettingsDjan.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToGameSettingsDjan.Location = new System.Drawing.Point(858, 6);
+            this.btnToGameSettingsDjan.Name = "btnToGameSettingsDjan";
+            this.btnToGameSettingsDjan.Size = new System.Drawing.Size(248, 83);
+            this.btnToGameSettingsDjan.TabIndex = 5;
+            this.btnToGameSettingsDjan.Text = "Next";
+            this.btnToGameSettingsDjan.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,6 +157,7 @@
         private System.Windows.Forms.Button btnAddTeamsDjan;
         public System.Windows.Forms.FlowLayoutPanel pnlTeamsDjan;
         public System.Windows.Forms.FlowLayoutPanel pnlPlayersDjan;
+        private System.Windows.Forms.Button btnToGameSettingsDjan;
     }
 }
 

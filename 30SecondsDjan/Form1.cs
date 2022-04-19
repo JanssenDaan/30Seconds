@@ -29,9 +29,17 @@ namespace _30SecondsDjan
         private void btnAddPlayer_Click(object sender, EventArgs e)
         {
             PlayerControlDjan = new UCPlayerDjan();
-            PlayerControlDjan.ID = CurrentIDPlayersDjan;
+
+            PlayerControlDjan.PlayerDjan.ID = CurrentIDPlayersDjan;
             PlayerControlDjan.lblIDDjan.Text = CurrentIDPlayersDjan.ToString();
-            PlayerControlDjan.BackColor = h.GetRandomColor();
+
+            Color colorDjan = h.GetRandomColor();
+            PlayerControlDjan.BackColor = colorDjan;
+            PlayerControlDjan.PlayerDjan.color = colorDjan;
+
+            PlayerControlDjan.lblPlayerNameDjan.Text = $"Player {CurrentIDPlayersDjan}";
+            PlayerControlDjan.PlayerDjan.Playername = $"Player {CurrentIDPlayersDjan}";
+
             pnlPlayersDjan.Controls.Add(PlayerControlDjan);
             CurrentIDPlayersDjan++;
         }
@@ -39,9 +47,12 @@ namespace _30SecondsDjan
         private void btnAddTeamsDjan_Click(object sender, EventArgs e)
         {
             TeamControlDjan = new UCTeam();
-            TeamControlDjan.TeamName = $"{CurrentIDTeamsDjan}";
+
+            TeamControlDjan.TeamDjan.TeamName = $"{CurrentIDTeamsDjan}";
             TeamControlDjan.lblTeamNameValueDjan.Text = CurrentIDTeamsDjan.ToString();
-            TeamControlDjan.TeamID = CurrentIDTeamsDjan;
+
+            TeamControlDjan.TeamDjan.TeamID = CurrentIDTeamsDjan;
+            
             pnlTeamsDjan.Controls.Add(TeamControlDjan);
             CurrentIDTeamsDjan++;
         }
