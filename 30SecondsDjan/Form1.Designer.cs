@@ -42,6 +42,7 @@
             this.btnStopGameDjan = new System.Windows.Forms.Button();
             this.lbxTeamsDjan = new System.Windows.Forms.ListBox();
             this.tbpPlayDjan = new System.Windows.Forms.TabPage();
+            this.btnStopWhilePlay = new System.Windows.Forms.Button();
             this.cbxFiveDjan = new System.Windows.Forms.CheckBox();
             this.cbxThreeDjan = new System.Windows.Forms.CheckBox();
             this.cbxTwoDjan = new System.Windows.Forms.CheckBox();
@@ -184,6 +185,7 @@
             this.btnStopGameDjan.TabIndex = 1;
             this.btnStopGameDjan.Text = "Stop Game";
             this.btnStopGameDjan.UseVisualStyleBackColor = true;
+            this.btnStopGameDjan.Click += new System.EventHandler(this.btnStopGameDjan_Click);
             // 
             // lbxTeamsDjan
             // 
@@ -196,6 +198,7 @@
             // 
             // tbpPlayDjan
             // 
+            this.tbpPlayDjan.Controls.Add(this.btnStopWhilePlay);
             this.tbpPlayDjan.Controls.Add(this.cbxFiveDjan);
             this.tbpPlayDjan.Controls.Add(this.cbxThreeDjan);
             this.tbpPlayDjan.Controls.Add(this.cbxTwoDjan);
@@ -217,6 +220,16 @@
             this.tbpPlayDjan.TabIndex = 2;
             this.tbpPlayDjan.Text = "Play";
             this.tbpPlayDjan.UseVisualStyleBackColor = true;
+            // 
+            // btnStopWhilePlay
+            // 
+            this.btnStopWhilePlay.Location = new System.Drawing.Point(660, 9);
+            this.btnStopWhilePlay.Name = "btnStopWhilePlay";
+            this.btnStopWhilePlay.Size = new System.Drawing.Size(140, 63);
+            this.btnStopWhilePlay.TabIndex = 14;
+            this.btnStopWhilePlay.Text = "Stop Game";
+            this.btnStopWhilePlay.UseVisualStyleBackColor = true;
+            this.btnStopWhilePlay.Click += new System.EventHandler(this.btnStopWhilePlay_Click);
             // 
             // cbxFiveDjan
             // 
@@ -486,6 +499,7 @@
         private System.Windows.Forms.Label lblWordTwoDjan;
         private System.Windows.Forms.Label lblWordOneDjan;
         private System.Windows.Forms.CheckBox cbxOneDjan;
+        private System.Windows.Forms.Button btnStopWhilePlay;
     }
 }
 

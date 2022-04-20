@@ -43,6 +43,11 @@ namespace _30SecondsDjan
 
         private void btnAddPlayer_Click(object sender, EventArgs e)
         {
+            if (pnlPlayersDjan.Controls.Count >= 9)
+            {
+                h.ShowError("Jammer, max 8 spelers");
+                return;
+            }
             PlayerControlDjan = new UCPlayerDjan();
 
             PlayerControlDjan.PlayerDjan.ID = CurrentIDPlayersDjan;
@@ -61,6 +66,11 @@ namespace _30SecondsDjan
 
         private void btnAddTeamsDjan_Click(object sender, EventArgs e)
         {
+            if (pnlTeamsDjan.Controls.Count >= 5)
+            {
+                h.ShowError("Jammer, max 4 teams!");
+                return;
+            }
             TeamControlDjan = new UCTeam();
 
             TeamControlDjan.TeamDjan.TeamName = $"{CurrentIDTeamsDjan}";
@@ -74,16 +84,24 @@ namespace _30SecondsDjan
 
         private void btnToGameSettingsDjan_Click(object sender, EventArgs e)
         {
-            tclOne.SelectedTab = tbpGameDjan;
-            ucTeamList = pnlTeamsDjan.Controls.OfType<UCTeam>().ToList(); ;
-
-            foreach (UCTeam team in ucTeamList)
+            if (pnlPlayersDjan.Controls.Count > 3 && pnlTeamsDjan.Controls.Count > 1)
             {
-                lbxTeamsDjan.Items.Add(team.TeamDjan);
-            }
+                lbxTeamsDjan.Items.Clear();
+                tclOne.SelectedTab = tbpGameDjan;
+                ucTeamList = pnlTeamsDjan.Controls.OfType<UCTeam>().ToList(); ;
 
-            lbxTeamsDjan.DisplayMember = "TeamName";
-            lbxTeamsDjan.ValueMember = "TeamName";
+                foreach (UCTeam team in ucTeamList)
+                {
+                    lbxTeamsDjan.Items.Add(team.TeamDjan);
+                }
+
+                lbxTeamsDjan.DisplayMember = "TeamName";
+                lbxTeamsDjan.ValueMember = "TeamName";
+            }
+            else
+            {
+                h.ShowError("Minimaal 2 teams en 4 spelers.");
+            }
         }
 
         private void lbxTeamsDjan_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,7 +141,7 @@ namespace _30SecondsDjan
             {
                 GameDetails.TeamsDjan.Add(t.TeamDjan);
             }
-
+            ReadFileForm = new ReadFileForm();
             ReadFileForm.Show();
         }
 
@@ -140,7 +158,7 @@ namespace _30SecondsDjan
             {
                 btn.Visible = false;
                 tmrGamePlayDjan.Start();
-                Countdown = 5;
+                Countdown = 30;
             }
             btnNextPlayer.Visible = false;
             GetNextPlayerDjan();
@@ -263,27 +281,32 @@ namespace _30SecondsDjan
             {
                 h.ShowMessage($"Team: {GameDetails.TeamsDjan[0].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[0].TeamName)} has won!");
                 btnNextPlayer.Visible = false;
+                WriteFile(GetPlayerNames(GameDetails.TeamsDjan[0].TeamName), GameDetails.TeamsDjan[0].TeamName, GameDetails.ScoreT1Djan.ToString());
                 return;
             }
             if (GameDetails.ScoreT2Djan >= 30)
             {
                 h.ShowMessage($"Team: {GameDetails.TeamsDjan[1].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[1].TeamName)} has won!");
                 btnNextPlayer.Visible = false;
+                WriteFile(GetPlayerNames(GameDetails.TeamsDjan[1].TeamName), GameDetails.TeamsDjan[1].TeamName, GameDetails.ScoreT2Djan.ToString());
+
                 return;
             }
             if (GameDetails.ScoreT3Djan >= 30)
             {
                 h.ShowMessage($"Team: {GameDetails.TeamsDjan[2].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[2].TeamName)} has won!"); 
                 btnNextPlayer.Visible = false;
+                WriteFile(GetPlayerNames(GameDetails.TeamsDjan[2].TeamName), GameDetails.TeamsDjan[2].TeamName, GameDetails.ScoreT3Djan.ToString());
                 return;
             }
-            if (GameDetails.ScoreT4Djan >= 30)
+            if (GameDetails.ScoreT4Djan >= 5)
             {
                 h.ShowMessage($"Team: {GameDetails.TeamsDjan[3].TeamName} with players: {GetPlayerNames(GameDetails.TeamsDjan[3].TeamName)} has won!"); 
                 btnNextPlayer.Visible = false;
+                WriteFile(GetPlayerNames(GameDetails.TeamsDjan[3].TeamName), GameDetails.TeamsDjan[3].TeamName, GameDetails.ScoreT4Djan.ToString());
                 return;
             }
-            Countdown = 5;
+            Countdown = 30;
             GetNextPlayerDjan();
             tmrGamePlayDjan.Start();
             btnNextPlayer.Visible = false;
@@ -292,6 +315,13 @@ namespace _30SecondsDjan
             cbxTwoDjan.Checked = false;
             cbxFourDjan.Checked = false;
             cbxFiveDjan.Checked = false;
+        }
+
+        private void WriteFile(string Players, string Team, string Points)
+        {
+            StreamWriter writer = new StreamWriter("winnings.txt", true);
+            writer.WriteLine($"Congrats!, Players {Players} has won in team {Team} with {Points} points!");
+            writer.Close();
         }
 
         private void ChangeWordsDjan()
@@ -334,6 +364,42 @@ namespace _30SecondsDjan
                 }
             }
             return playerNames;
+        }
+
+        private void btnStopGameDjan_Click(object sender, EventArgs e)
+        {
+            StopGame();
+        }
+
+        private void StopGame()
+        {
+            GameDetails.TeamsDjan.Clear();
+            GameDetails.Players.Clear();
+            GameDetails.ScoreT1Djan = 0;
+            GameDetails.ScoreT2Djan = 0;
+            GameDetails.ScoreT3Djan = 0;
+            GameDetails.ScoreT4Djan = 0;
+            tmrGamePlayDjan.Stop();
+            Countdown = 0;
+            tclOne.SelectedTab = tbpHomeDjan;
+
+            lblTeamOneDjan.Text = "--";
+            lblTeamTwoDjan.Text = "--";
+            lblTeamThreeDjan.Text = "--";
+            lblTeamFourDjan.Text = "--";
+
+            h.StopSound();
+            btnStartGameDjan.Visible = true;
+            //MainForm main = new MainForm();
+            //main = new MainForm();
+            //main.Show();
+            //this.Close();
+
+        }
+
+        private void btnStopWhilePlay_Click(object sender, EventArgs e)
+        {
+            StopGame();
         }
     }
 }
