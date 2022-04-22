@@ -31,5 +31,9 @@ namespace _30SecondsDjan
             MainForm.instance.pnlTeamsDjan.Controls.Remove(this);
         }
 
+        private void UCTeam_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

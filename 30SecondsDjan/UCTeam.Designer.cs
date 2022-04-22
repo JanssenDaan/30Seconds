@@ -82,6 +82,7 @@
             this.Controls.Add(this.lblTeamNameDjan);
             this.Name = "UCTeam";
             this.Size = new System.Drawing.Size(207, 67);
+            this.Load += new System.EventHandler(this.UCTeam_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
